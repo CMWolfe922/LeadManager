@@ -145,12 +145,19 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 INSTALLED_APPS = [
 
     # The following apps are required:
-    'django.contrib.auth',
-    'django.contrib.messages',
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
 
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    
+    "crispy_forms",
+    "crispy_bootstrap5",
     # ... include the providers you want to enable:
     # 'allauth.socialaccount.providers.agave',
     # 'allauth.socialaccount.providers.amazon',
@@ -272,11 +279,13 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = (
-    "django.middleware.common.CommonMiddleware",
+    "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
 
     # Add the account middleware:
     "allauth.account.middleware.AccountMiddleware",
@@ -305,3 +314,6 @@ SOCIALACCOUNT_PROVIDERS = {
         }
     }
 }
+
+ACCOUNT_LOGOUT_REDIRECT_URL = '/accounts/login'
+LOGIN_REDIRECT_URL = '/index'
